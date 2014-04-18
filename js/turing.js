@@ -61,4 +61,10 @@ var Controller = function($scope){
 			}
 		}
 	}
+	$scope.addRule = function(){
+		$scope.inputs.push(new Inp());
+	}
+	$scope.removeRule = function(){
+		$scope.inputs.pop();
+	}
 }

@@ -16,30 +16,26 @@
 <div ng-app ng-controller="Controller">
 <center>
 	<p>Current state: {{state}}</p>
-	<div class="pure-g">
-		<div class="pure-u-1-1">
-			<div id="tape">
-				<input ng-repeat="item in tapeItems" ng-model="item.val" class="{{item.active}}">
-			</div>
-		</div>
+	<div id="tape">
+		<input ng-repeat="item in tapeItems" ng-model="item.val" class="{{item.active}}">
 	</div>
-	<div class="pure-g">
-		<div class="pure-u-1-1">
-			<div id="inputs">
-				<div class="inp" ng-repeat="input in inputs">
-					<input ng-model="input.curstate" type="text">
-					<input ng-model="input.inp" type="text">
-					<input ng-model="input.nextstate" type="text">
-					<input ng-model="input.write" type="text">
-					<select ng-model="input.move">
-						<option>R</option>
-						<option>L</option>
-					</select>
-				</div>
-			</div>
-			<input type="button" ng-click="go();" value="GO!">
-		</div>
-	</div>
+	<table class="pure-table pure-table-horizontal">
+		<thead><tr><th>Cur. state</th><th>Read</th><th>Next state</th><th>Write</th><th>Move</th></tr></thead>
+		<tbody><tr class="inp" ng-repeat="input in inputs">
+			<td><input ng-model="input.curstate" type="text"></td>
+			<td><input ng-model="input.inp" type="text"></td>
+			<td><input ng-model="input.nextstate" type="text"></td>
+			<td><input ng-model="input.write" type="text"></td>
+			<td><select ng-model="input.move">
+				<option value="R">Right</option>
+				<option value="L">Left</option>
+			</select></td>
+		</tr></tbody>
+	</table>
+	<br>
+	<button class="pure-button" ng-click="addRule();">Add a rule</button>
+	<button class="pure-button" ng-click="removeRule();">Remove last rule</button>
+	<input type="button" class="pure-button pure-button-primary" ng-click="go();" value="GO!">
 </center>
 </div>
 </main>
