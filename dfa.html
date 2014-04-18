@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DFA</title>
+	<link rel="stylesheet" type="text/css" href="css/pure.min.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/dfa.css">
+</head>
+<body>
+<nav>
+	<a href="index.html"><span>Home</span></a>
+	<a href="dfa.html"><span>DFA</span></a>
+	<a href="turing.html"><span>Turing</span></a>
+</nav>
+<main class="notnav">
+<div ng-app ng-controller="Controller">
+	<center>
+		<div id="states">
+		<div ng-repeat="state in states" class="state {{state.active}}">
+			<div class="head">State #{{$index}} [Final: <input type="checkbox" ng-model="state.isfinal">]</div>
+			<div class="content">
+				@input=0 goes to State #<input type="text" ng-model="state.nextState[0]"><br>
+				@input=1 goes to State #<input type="text" ng-model="state.nextState[1]"><br>
+			</div>
+		</div>
+		</div>
+		<button class="pure-button pure-button-primary" ng-click="addState();">Add a state</button>
+		<button class="pure-button pure-button-primary" ng-click="removeState();">Remove a state</button><br>
+		<p>Enter a string:</p>
+		<input id="stage" type="text" ng-model="string">
+		<div id="verdict" ng-switch on="verdict">
+			<div ng-switch-when="true">Accepted!</div>
+			<div ng-switch-default>Not Accepted!</div>
+		</div>
+	</center>
+</div>
+</main>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/dfa.js"></script>
+</body>
+</html>

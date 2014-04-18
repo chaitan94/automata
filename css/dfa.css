@@ -1,0 +1,27 @@
+#states{
+	padding: 40px 0;
+}
+.state{
+	display: inline-block;
+	background: #FFF;
+	border-radius: 2px;
+	box-shadow: rgba(0,0,0,0.4) 0 0 4px 0;
+	margin: 10px 20px;
+}
+.state .content{
+	padding: 15px;
+}
+.state .head{
+	color: #FFF;
+	background: #89A;
+	padding: 10px;
+}
+.state.active{
+	border: 2px solid #09C;
+}
+.state.active .head{
+	background: #09C;
+}
+.state input[type=text]{
+	width: 40px;
+}

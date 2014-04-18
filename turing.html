@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Turing Machine</title>
+	<link rel="stylesheet" type="text/css" href="css/pure.min.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/turing.css">
+</head>
+<body>
+<nav>
+	<a href="index.html"><span>Home</span></a>
+	<a href="dfa.html"><span>DFA</span></a>
+	<a href="turing.html"><span>Turing</span></a>
+</nav>
+<main class="notnav">
+<div ng-app ng-controller="Controller">
+<center>
+	<p>Current state: {{state}}</p>
+	<div class="pure-g">
+		<div class="pure-u-1-1">
+			<div id="tape">
+				<input ng-repeat="item in tapeItems" ng-model="item.val" class="{{item.active}}">
+			</div>
+		</div>
+	</div>
+	<div class="pure-g">
+		<div class="pure-u-1-1">
+			<div id="inputs">
+				<div class="inp" ng-repeat="input in inputs">
+					<input ng-model="input.curstate" type="text">
+					<input ng-model="input.inp" type="text">
+					<input ng-model="input.nextstate" type="text">
+					<input ng-model="input.write" type="text">
+					<select ng-model="input.move">
+						<option>R</option>
+						<option>L</option>
+					</select>
+				</div>
+			</div>
+			<input type="button" ng-click="go();" value="GO!">
+		</div>
+	</div>
+</center>
+</div>
+</main>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/turing.js"></script>
+</body>
+</html>
