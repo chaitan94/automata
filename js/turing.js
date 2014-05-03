@@ -10,7 +10,7 @@ var TapeItem = function(){
 	this.active = '';
 };
 
-var Controller = function($scope){
+var Controller = function($scope, $interval){
 	$scope.state = 0;
 	$scope.demo = '';
 	$scope.inputs = [
@@ -67,7 +67,7 @@ var Controller = function($scope){
 			inps[inpi].inp != $scope.tapeItems[$scope.pointer.getPos()].val))
 				inpi++;
 		if(inpi >= inps.length) return false;
-		if(inps[inpi].inp==$scope.tapeItems[$scope.pointer.getPos()].val){
+		if(inps[inpi].inp == $scope.tapeItems[$scope.pointer.getPos()].val){
 			$scope.tapeItems[$scope.pointer.getPos()].val = inps[inpi].write;
 			$scope.state = inps[inpi].nextstate;
 			switch(inps[inpi].move){
@@ -79,6 +79,20 @@ var Controller = function($scope){
 					$scope.pointer.moveRight();
 					break;
 			}
+		}
+	}
+	var playing = false;
+	var interval;
+	$scope.togglePlay = function(e){
+		if(playing){
+			$interval.cancel(interval);
+			interval = undefined;
+			playing = false;
+			document.querySelector('#play').value = 'Play';
+		} else {
+			interval = $interval($scope.go, 200);
+			playing = true;
+			document.querySelector('#play').value = 'Pause';
 		}
 	}
 	$scope.addRule = function(){
